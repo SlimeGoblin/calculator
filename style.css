@@ -1,34 +1,84 @@
-.calContainer{
+
+
+.bigCont{
     display: flex;
-    flex-direction: column;
+    min-height: 10rem;
     justify-content: center;
+    align-content: center;
     align-items: center;
+    height: 95vh;
+    overflow: hidden;
+    background-color: rgb(183, 110, 121);
+}
+
+.calContainer{
+    border: 8px solid rgb(89, 67, 90);
+    display: flex;
+    border-radius: 20px;
+    flex-direction: column;
+    width: 30rem;
+    height: 50rem;
+    margin: auto;
+    align-items: center;
+    background-color: white;;
+    box-shadow: 6px 6px 6px 6px grey;
 }
 
 .outputBox{
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    width: 50%;
-    height: 3rem;
-    border: .2rem solid black;
-    margin: 2rem;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    border: 2px solid black;
+    height: 8rem;
+    margin: .1rem;
+    margin-top: 3.5rem;
+    margin-bottom: 4.5rem;
+    width: 80%;
+    font-size: 80px;
+    background-color: grey
+
 }
+
+.topRow:hover{
+    background-color: #C8A2CB;
+}
+
 
 button{
-    width: 3.5rem;
-    height: 3rem;
-    margin: .5rem;
+    min-width: 5rem;
+    min-height: 4rem;
+    flex-grow: none;
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
-.numberContainer{
+
+.buttonContainer{
+
+    display: grid;
+    width: 85%;
+    height: 25rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: .2rem;
 }
 
 h1{
     text-align: center;
+    margin: .1rem;
+    margin-top: .5rem;
+    margin-bottom: 0%;
+}
+
+.footer{
+background-color: #1F2937;
+color: #eeeeee;
+font-size: 24px;
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 5vh;
 }

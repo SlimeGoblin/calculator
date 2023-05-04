@@ -1,21 +1,17 @@
 /* TODO:
 1) Will read negative sign as a - operator... so we can't do negatives 
-2) Make it so long decimal numbers don't overflow screen
-3) make it so they can't do multiple decimals(ie; 4.2.3.4)
-4) Make it look good
-5) Add to GitHub
-6) Add keyboard support
-
+2) Make it so long decimal numbers don't overflow screen (to fix 8)
+3) Mobile?
 */ 
 
 // Query Selectors
 
 
-const numberButtonsContainer = document.querySelector(".numberContainer")
+const numberButtonsContainer = document.querySelector(".buttonContainer")
 
-const clear = document.querySelector(".clear")
+const clear = document.querySelector("#clear")
 
-const equalbtn = document.querySelector(".equals")
+const equalbtn = document.querySelector("#equals")
 
 const plusbtn = document.querySelector("#plus")
 
@@ -25,45 +21,61 @@ const multiplybtn = document.querySelector("#multiply")
 
 const divisionbtn = document.querySelector("#division")
 
+const powerbtn = document.querySelector("#power")
 
+//Delete Button (Checks for if Variable is deleted to allow us to write a new one)
 
-const delbtn = document.querySelector(".del")
+const delbtn = document.querySelector("#del")
 
 delbtn.addEventListener('click', ()=>{
+    if (output.textContent.indexOf(operator)===  output.textContent.length -1){
+        console.log ("deleting varioable")
+        operator = ''
+        b = ''
+        operatorExists = false
+        output.textContent = output.textContent.slice(0,-1)
+    } 
     output.textContent = output.textContent.slice(0,-1)
+    
 })
+
+//Clear Button
+
+clear.addEventListener('click', ()=>{
+    output.textContent = ''
+    a=''
+    b=''
+    operator = ''
+    operatorExists = false
+})
+
+// Decimal Button and making it so you can add exactly 1 decimal before the operator and 1 decimal after
 
 const decimalbtn = document.querySelector("#decimal")
 
 decimalbtn.addEventListener('click', ()=>{
-    if (output.textContent.includes(".") === false ){
+    console.log (output.textContent.split(operator)[1])
+    if ((output.textContent.includes(".") === false ) && (operatorExists === false)) {
     output.textContent += decimalbtn.textContent
+    } else if ((output.textContent.split(operator)[1].includes(".")=== false) && (operatorExists == true)){
+        output.textContent += decimalbtn.textContent
     }
 })
 
+//Output so we can check whats on the calc screen and checking if there are variable/operator so we know what we can and cannot add
 
 var output = document.querySelector(".output")
-
 
 var thereAreVariables = false
 
 var operatorExists = false 
 
+// Variables for first and second numbers
 
-// Making the number buttons
-
-function makeButtons(){
-    for(let i = 0; i<10; i++){
-
-        const newButton = document.createElement('button')
-        newButton.classList.add("number")
-        newButton.textContent= i
-
-        numberButtonsContainer.appendChild(newButton);
-
-    }
-}
-makeButtons()
+var a = ''
+var b = ''
+var operator = ''
+var answer = ''
 
 // Adding the numbers to the output box 
 
@@ -74,33 +86,18 @@ const numberButtons = [...document.querySelectorAll(".number")].forEach(function
 })
 })
 
-//Adding operations to the output box (NAN = sad ))
+//Adding operations to the output box 
 
 const operationButtons = [...document.querySelectorAll(".operations")].forEach(function(item){
     item.addEventListener('click', ()=>{
         if(operatorExists === false){
         output.textContent +=  (item.textContent);
         operatorExists = true;
+        answer = ''
         console.log(output.textContent);
         }
     })
 })
-
-//Clear Button
-
-clear.addEventListener('click', ()=>{
-    output.textContent = ''
-    a=''
-    b=''
-    operator = ''
-})
-
-// Variables for first and second numbers
-
-var a = ''
-var b = ''
-var operator = ``
-
 
 //Adding Operators; check variables checks if we already have an equation and need to answer it or if we just need to add the operator. Evaulate answers. 
 
@@ -126,6 +123,7 @@ function Operate (op) {
             case "+":
                 console.log(`The answer is: ${a+b}`);
                 output.textContent = (a + b); 
+                answer = a + b
                 a= a+b
                 b = ''
 
@@ -133,6 +131,7 @@ function Operate (op) {
             case "-":
                 console.log(`The answer is: ${a-b}`);
                 output.textContent = (a - b);
+                answer = a-b
                 a= a-b
                 b=''
   
@@ -141,6 +140,7 @@ function Operate (op) {
             case "*":
                 console.log(`The answer is: ${a*b}`);
                 output.textContent = (a * b);
+                answer = a * b
                 a= a*b
                 b=''
 
@@ -150,13 +150,22 @@ function Operate (op) {
                 console.log(`The answer is: ${a/b}`);
                 if((b === 0) && (operator = "/")){
                     output.textContent = `${a} / 0? You can't divide by 0!`
+                    answer = 0
                 } else{
                 output.textContent = (a / b);
+                answer = a/b
                 a = a/b
                 b=''
                 }
 
                 break;
+            
+            case "^":
+                console.log(`The answer is: ${a**b}`);
+                output.textContent = (a ** b);
+                answer = a **b
+                a = a**b
+                b = ''
         }
         }
     }
@@ -229,4 +238,38 @@ multiplybtn.addEventListener('click', ()=>{
 divisionbtn.addEventListener('click', ()=>{
     var variable = new Operate("/")
     variable.checkVariables()
+})
+
+//Power Function
+
+powerbtn.addEventListener('click', () =>{
+    var variable = new Operate("^")
+    variable.checkVariables()
+})
+
+
+//keyboard number support
+
+window.addEventListener("keydown", (e) =>{
+    if (isNaN(e.key) == false ){
+    output.textContent += parseInt(e.key)
+    }
+})
+
+//keyboard support for operations
+
+window.addEventListener("keydown", (f) =>{
+    switch (f.key){
+        case "+": plusbtn.click(); break;
+        case "-": minusbtn.click(); break;
+        case "*": multiplybtn.click(); break;
+        case "/": divisionbtn.click(); break;
+        case "^": powerbtn.click(); break;
+        case "=": equalbtn.click(); break;
+        case "Enter": equalbtn.click(); break;
+        case "Backspace": delbtn.click(); break;
+        case "Delete": delbtn.click(); break;
+        case ".": decimalbtn.click(); break;
+        case " ": clear.click();break;
+    }
 })
