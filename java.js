@@ -1,7 +1,8 @@
 /* TODO:
 1) Will read negative sign as a - operator... so we can't do negatives 
-2) Make it so long decimal numbers don't overflow screen (to fix 8)
-3) Mobile?
+2) Mobile?
+3) Hover Effect
+4) Add Fonts
 */ 
 
 // Query Selectors
@@ -82,6 +83,7 @@ var answer = ''
 const numberButtons = [...document.querySelectorAll(".number")].forEach(function(item){
     item.addEventListener('click', ()=>{
     output.textContent+= parseInt(item.textContent,10);
+    screenOverflow();
     console.log(output.textContent)
 })
 })
@@ -92,6 +94,7 @@ const operationButtons = [...document.querySelectorAll(".operations")].forEach(f
     item.addEventListener('click', ()=>{
         if(operatorExists === false){
         output.textContent +=  (item.textContent);
+        screenOverflow();
         operatorExists = true;
         answer = ''
         console.log(output.textContent);
@@ -123,6 +126,7 @@ function Operate (op) {
             case "+":
                 console.log(`The answer is: ${a+b}`);
                 output.textContent = (a + b); 
+                screenOverflow();
                 answer = a + b
                 a= a+b
                 b = ''
@@ -131,6 +135,7 @@ function Operate (op) {
             case "-":
                 console.log(`The answer is: ${a-b}`);
                 output.textContent = (a - b);
+                screenOverflow();
                 answer = a-b
                 a= a-b
                 b=''
@@ -140,6 +145,7 @@ function Operate (op) {
             case "*":
                 console.log(`The answer is: ${a*b}`);
                 output.textContent = (a * b);
+                screenOverflow();
                 answer = a * b
                 a= a*b
                 b=''
@@ -153,6 +159,7 @@ function Operate (op) {
                     answer = 0
                 } else{
                 output.textContent = (a / b);
+                screenOverflow();
                 answer = a/b
                 a = a/b
                 b=''
@@ -163,6 +170,7 @@ function Operate (op) {
             case "^":
                 console.log(`The answer is: ${a**b}`);
                 output.textContent = (a ** b);
+                screenOverflow();
                 answer = a **b
                 a = a**b
                 b = ''
@@ -213,6 +221,16 @@ function equals(){
     }
 }
 
+// function for making sure the screen does not overload
+
+function screenOverflow(){
+    var max_chars = 12
+    if (output.textContent.length > max_chars){
+        output.textContent = output.textContent.substring(0, max_chars);
+        output.textContent += ".."
+    }
+}
+
 // Addition Function 
 
 plusbtn.addEventListener('click', ()=>{
@@ -238,6 +256,7 @@ multiplybtn.addEventListener('click', ()=>{
 divisionbtn.addEventListener('click', ()=>{
     var variable = new Operate("/")
     variable.checkVariables()
+    screenOverflow();
 })
 
 //Power Function

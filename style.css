@@ -34,14 +34,26 @@
     margin: .1rem;
     margin-top: 3.5rem;
     margin-bottom: 4.5rem;
-    width: 80%;
-    font-size: 80px;
-    background-color: grey
+    width: 85%;
+    font-size: 60px;
+    background-color: #737380
 
 }
 
-.topRow:hover{
+.number,
+#decimal{
     background-color: #C8A2CB;
+}
+
+.operations,
+#equals,
+.ACoperations,
+.negative{
+background-color: #e3b1b1;
+}
+
+#del{
+    background-color: rgb(216, 131, 131)
 }
 
 
@@ -52,6 +64,12 @@ button{
     border-radius: 8px;
     margin-top: 2px;
     margin-bottom: 2px;
+    transition: all 1s ease;
+}
+
+button:hover{
+    filter: brightness(.80);
+    border: none;
 }
 
 
