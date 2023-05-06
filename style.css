@@ -7,7 +7,10 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .bigCont{background-color: rgb(183, 110, 121);}
+    .bigCont{background-color: rgb(183, 110, 121)};
+    .footer{font-size: 10px};
+    .footer{height: 12px;};
+
   }
 
 .bigCont{
