@@ -4,11 +4,18 @@
     }
   
     @media only screen and (max-width:600px) {
-        .footer#foot{font-size: 2px;
-            height: 12px;
-            background-color: blue;
+        .footer#foot{font-size: 10px;
         }
     }
+
+    @media only screen and (max-width:600px) {
+        .calContainer {
+            max-height: 80vh;
+            max-width:  50vh;
+        }
+    }
+
+
 
 
 @font-face {
