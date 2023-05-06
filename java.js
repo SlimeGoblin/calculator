@@ -1,6 +1,6 @@
 /* TODO:
 1) pos/neg works on expression b but it doesn't display any sign changes
-2)Mobile
+2)Mobile; footer is too big, buttons aren't lined up nicely
 */ 
 
 // Query Selectors
