@@ -1,10 +1,14 @@
 @media only screen and (max-width: 600px) {
     .bigCont{background-color: rgb(231, 220, 222)};
-    .footer#foot{font-size: 2px;
-    height: 12px;
-    background-color: blue;
+
     }
-  }
+  
+    @media only screen and (max-width:600px) {
+        .footer#foot{font-size: 2px;
+            height: 12px;
+            background-color: blue;
+        }
+    }
 
 
 @font-face {
