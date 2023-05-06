@@ -6,6 +6,10 @@
     font-family: Poppins, sans-serif;
   }
 
+  @media only screen and (max-width: 600px) {
+    body {background: red;}
+  }
+
 .bigCont{
     display: flex;
     min-height: 10rem;

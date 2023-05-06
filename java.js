@@ -1,7 +1,6 @@
 /* TODO:
-1) Will read negative sign as a - operator... so we can't do negatives 
-2) Put on website- check if mobile?
-3) Add that thing where it shows the calculation too
+1) pos/neg works on expression b but it doesn't display any sign changes
+2)Mobile
 */ 
 
 // Query Selectors
@@ -29,15 +28,17 @@ var AposNeg = false
 var BposNeg = false
 
 posNegbtn.addEventListener('click', ()=>{
-    if(operatorExists == false){
+    if(operatorExists == false && output.textContent.length > 0){
         AposNeg = true
         output.textContent = 0- parseInt(output.textContent, 10)
         console.log(`negative is ${0-a}`)
     } else if (operator ="+" ){
 
-        
+       // output.textContent = output.textContent.replace("+", "-") 
+        var variable= new Operate ("-")
+        variable.checkVariables
+
         BposNeg= true 
-        findVariables()
         console.log("b posneg true")
         console.log(0 - parseInt(output.textContent.split("+")[1]))
     }
@@ -269,6 +270,7 @@ function screenOverflow(){
     if (output.textContent.length > max_chars){
         output.textContent = output.textContent.substring(0, max_chars);
         output.textContent += ".."
+
     }
 }
 
