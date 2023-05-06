@@ -5,7 +5,6 @@
   
     @media only screen and (max-width:600px) {
         .footer#foot{font-size: 10px;
-            background-color: blue;
         }
     }
 
@@ -19,11 +18,16 @@
     @media only screen and (max-width: 600px){
         button{
             max-width: 7vh;
+            max-height: 5vh;
+        }       
+    }
 
+    @media only screen and (max-width: 600px){
+        .output{
+            color: blue;
         }
-            
-        }
-    
+    }
+
 
 
 
@@ -40,7 +44,6 @@
 .bigCont{
     display: flex;
     min-height: 10rem;
-    justify-content: center;
     align-content: center;
     align-items: center;
     height: 95vh;
@@ -109,14 +112,15 @@ background-color: #e3b1b1;
 
 
 button{
-    width: 5rem;
-    height: 4rem;
+    max-width: 5rem;
+    min-height: 4rem;
     flex-grow: none;
     border-radius: 8px;
     margin-top: 2px;
     margin-bottom: 2px;
     transition: all 1s ease;
     font-family: Poppins, sans-serif;
+
 }
 
 button:hover{
@@ -126,14 +130,15 @@ button:hover{
 
 
 .buttonContainer{
-
     display: grid;
     width: 85%;
     height: 25rem;
-    display: flex;
-    flex-wrap: wrap;
+    grid-template-columns: 5rem 5rem 5rem 5rem;
+    align-items: center;
+    align-content: center;
     justify-content: space-evenly;
     gap: .2rem;
+
 }
 
 h1{
