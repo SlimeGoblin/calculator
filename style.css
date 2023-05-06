@@ -15,6 +15,15 @@
         }
     }
 
+    @media only screen and (max-width: 600px){
+        button{
+            max-width: 7vh;
+
+        }
+            
+        }
+    
+
 
 
 
@@ -99,8 +108,8 @@ background-color: #e3b1b1;
 
 
 button{
-    min-width: 5rem;
-    min-height: 4rem;
+    width: 5rem;
+    height: 4rem;
     flex-grow: none;
     border-radius: 8px;
     margin-top: 2px;
