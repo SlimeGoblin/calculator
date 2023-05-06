@@ -5,6 +5,7 @@
   
     @media only screen and (max-width:600px) {
         .footer#foot{font-size: 10px;
+            background-color: blue;
         }
     }
 
