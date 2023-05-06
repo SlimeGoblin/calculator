@@ -9,6 +9,7 @@
   @media only screen and (max-width: 600px) {
     .bigCont{height: 90rem;}
     .calContainer{height: 20rem;}
+    .bigCont{background-color: rgb(183, 110, 121);}
   }
 
 .bigCont{
