@@ -1,4 +1,10 @@
-
+@font-face {
+    font-family: "Poppins";
+    src: url(../calculator_project/Poppins-Light.ttf) 
+  }
+  body{
+    font-family: Poppins, sans-serif;
+  }
 
 .bigCont{
     display: flex;
@@ -26,18 +32,32 @@
 
 .outputBox{
     display: flex;
-    align-items: center;
-    align-content: center;
+    flex-direction: row;
     justify-content: flex-end;
     border: 2px solid black;
-    height: 8rem;
+    height: 8.8rem;
     margin: .1rem;
     margin-top: 3.5rem;
     margin-bottom: 4.5rem;
     width: 85%;
-    font-size: 60px;
     background-color: #737380
 
+}
+
+#show{
+
+    align-self: flex-start;
+}
+
+
+.output{
+    font-size: 4rem;
+    align-self: center;
+}
+
+.errorMessage{
+    font-size: 2rem;
+    text-align: center;
 }
 
 .number,
@@ -65,6 +85,7 @@ button{
     margin-top: 2px;
     margin-bottom: 2px;
     transition: all 1s ease;
+    font-family: Poppins, sans-serif;
 }
 
 button:hover{
@@ -89,10 +110,11 @@ h1{
     margin: .1rem;
     margin-top: .5rem;
     margin-bottom: 0%;
+    font-size: 3rem;
 }
 
 .footer{
-background-color: #1F2937;
+background-color: rgb(89, 67, 90);
 color: #eeeeee;
 font-size: 24px;
 display: flex;

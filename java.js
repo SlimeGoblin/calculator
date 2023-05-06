@@ -1,8 +1,7 @@
 /* TODO:
 1) Will read negative sign as a - operator... so we can't do negatives 
-2) Mobile?
-3) Hover Effect
-4) Add Fonts
+2) Put on website- check if mobile?
+3) Add that thing where it shows the calculation too
 */ 
 
 // Query Selectors
@@ -24,6 +23,32 @@ const divisionbtn = document.querySelector("#division")
 
 const powerbtn = document.querySelector("#power")
 
+const posNegbtn = document.querySelector("#posNeg")
+
+var AposNeg = false
+var BposNeg = false
+
+posNegbtn.addEventListener('click', ()=>{
+    if(operatorExists == false){
+        AposNeg = true
+        output.textContent = 0- parseInt(output.textContent, 10)
+        console.log(`negative is ${0-a}`)
+    } else if (operator ="+" ){
+
+        
+        BposNeg= true 
+        findVariables()
+        console.log("b posneg true")
+        console.log(0 - parseInt(output.textContent.split("+")[1]))
+    }
+})
+
+//error message needs to be a smaller font, ShowCalc wants to show on top
+const errorMessage = document.querySelector(".errorMessage")
+
+var showCalculation = document.querySelector("#show")
+
+
 //Delete Button (Checks for if Variable is deleted to allow us to write a new one)
 
 const delbtn = document.querySelector("#del")
@@ -44,6 +69,7 @@ delbtn.addEventListener('click', ()=>{
 
 clear.addEventListener('click', ()=>{
     output.textContent = ''
+    errorMessage.textContent =''
     a=''
     b=''
     operator = ''
@@ -60,12 +86,13 @@ decimalbtn.addEventListener('click', ()=>{
     output.textContent += decimalbtn.textContent
     } else if ((output.textContent.split(operator)[1].includes(".")=== false) && (operatorExists == true)){
         output.textContent += decimalbtn.textContent
-    }
+    } 
 })
 
 //Output so we can check whats on the calc screen and checking if there are variable/operator so we know what we can and cannot add
 
 var output = document.querySelector(".output")
+
 
 var thereAreVariables = false
 
@@ -92,7 +119,7 @@ const numberButtons = [...document.querySelectorAll(".number")].forEach(function
 
 const operationButtons = [...document.querySelectorAll(".operations")].forEach(function(item){
     item.addEventListener('click', ()=>{
-        if(operatorExists === false){
+        if(operatorExists === false && output.textContent.length > 0){
         output.textContent +=  (item.textContent);
         screenOverflow();
         operatorExists = true;
@@ -130,6 +157,8 @@ function Operate (op) {
                 answer = a + b
                 a= a+b
                 b = ''
+                AposNeg = false
+                BposNeg = false
 
                 break;
             case "-":
@@ -139,7 +168,8 @@ function Operate (op) {
                 answer = a-b
                 a= a-b
                 b=''
-  
+                AposNeg = false
+                BposNeg = false
              
                 break;
             case "*":
@@ -149,13 +179,15 @@ function Operate (op) {
                 answer = a * b
                 a= a*b
                 b=''
-
+                AposNeg = false
+                BposNeg = false
 
                 break;
             case "/":
                 console.log(`The answer is: ${a/b}`);
                 if((b === 0) && (operator = "/")){
-                    output.textContent = `${a} / 0? You can't divide by 0!`
+                    output.textContent =  ""
+                    errorMessage.textContent = `${a} / 0? You can't divide by 0!`
                     answer = 0
                 } else{
                 output.textContent = (a / b);
@@ -163,6 +195,8 @@ function Operate (op) {
                 answer = a/b
                 a = a/b
                 b=''
+                AposNeg = false
+                BposNeg = false
                 }
 
                 break;
@@ -174,6 +208,8 @@ function Operate (op) {
                 answer = a **b
                 a = a**b
                 b = ''
+                AposNeg = false
+                BposNeg = false
         }
         }
     }
@@ -214,17 +250,22 @@ function equals(){
     if (thereAreVariables === false){
         console.log("not enough variables")
     }
-    else{
+    else if (BposNeg){
+    b = 0 - parseInt(output.textContent.split(operator)[1])
     Findanswer.evaluate(a,b)
     thereAreVariables= false
     operatorExists = false
+    } else{
+        Findanswer.evaluate(a,b)
+        thereAreVariables= false
+        operatorExists = false
     }
 }
 
 // function for making sure the screen does not overload
 
 function screenOverflow(){
-    var max_chars = 12
+    var max_chars = 10
     if (output.textContent.length > max_chars){
         output.textContent = output.textContent.substring(0, max_chars);
         output.textContent += ".."
@@ -265,7 +306,6 @@ powerbtn.addEventListener('click', () =>{
     var variable = new Operate("^")
     variable.checkVariables()
 })
-
 
 //keyboard number support
 
