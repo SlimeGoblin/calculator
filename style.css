@@ -22,15 +22,6 @@
         }       
     }
 
-    @media only screen and (max-width: 600px){
-        .output{
-            color: blue;
-        }
-    }
-
-
-
-
 
 @font-face {
     font-family: "Poppins";
