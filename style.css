@@ -30,17 +30,15 @@
   }
   body{
     font-family: Poppins, sans-serif;
-
-  }
-
-
-  .bigCont{
-    display: flex;
-    justify-content: center;
     height: 95vh;
+    justify-content: center;
     background-color:    rgb(183, 110, 121);
     margin: 0;
+
   }
+
+
+
 
 
 .calContainer{
@@ -58,7 +56,7 @@
     align-items: center;
     background-color: white;;
     box-shadow: 6px 6px 6px 6px grey;
-    padding-bottom: 10px;
+
 }
 
 .outputBox{
