@@ -35,7 +35,6 @@
 
 .bigCont{
     display: flex;
-    min-height: 10rem;
     align-content: center;
     align-items: center;
     height: 95vh;
