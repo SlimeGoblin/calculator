@@ -30,16 +30,13 @@
   }
   body{
     font-family: Poppins, sans-serif;
+    height: 95vh;
+    background-color:    rgb(183, 110, 121);
+    margin: 0;
   }
 
 
-.bigCont{
-    display: flex;
-    align-content: center;
-    align-items: center;
-    height: 95vh;
-    background-color: rgb(183, 110, 121);
-}
+
 
 .calContainer{
     border: 8px solid rgb(89, 67, 90);
@@ -145,7 +142,9 @@ background-color: rgb(89, 67, 90);
 color: #eeeeee;
 font-size: 24px;
 display: flex;
-align-items: center;
+width: 100%;
+margin: 0;
 justify-content: center;
-height: 5vh;
+position: fixed;
+bottom: 0;
 }
